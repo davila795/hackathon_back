@@ -12,10 +12,9 @@
 
 If you want to test the rest of endpoints use:<br>
 **username: carlos - password: 1234**
-for login. This will return a token.
-
-Or you can signup using the POST endpoint **/api/auth** this will return a token valid for 1 hour.<br>
-Use that token in your **headers as x-auth-token** to access all the endpoints.
+for login. This will return a token.<br>
+Or you can signup using the POST endpoint **/api/auth** this will return a token valid for 1 hour.<br><br>
+Use the token in your **headers as x-auth-token** and use **Content-Type: application/json** to access all the endpoints.
 
 **Endpoints>>>** 
 
