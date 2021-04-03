@@ -3,15 +3,9 @@ import neasController from '../controllers/neasController.js';
 import auth from '../middleware/authMiddleware.js'
 const router = express.Router();
 
-router.get('/',
-  auth,
-  neasController.findAll
-);
+router.get('/', neasController.findAll);
 
-router.post('/',
-  auth,
-  neasController.addList
-);
+router.post('/', neasController.addList);
 
 router.get('/:id',
   auth,

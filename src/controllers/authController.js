@@ -82,6 +82,6 @@ const loggedInUser = async (req, res, next) => {
     console.log(error);
     res.status(500).json({ message: 'Server error' });
   }
-}
+};
 
 export default { login, signUp, loggedInUser };
