@@ -21,7 +21,7 @@ export function run() {
   app.use(express.json({ extended: true }));
 
   //  Port
-  const port = process.env.NODE_PORT || 4000;
+  const port = process.env.PORT || 4000;
 
   //  Routes
   app.use('/api/auth', authRoutes);
@@ -30,7 +30,7 @@ export function run() {
 
 
   //  Initialize
-  app.listen(port, '0.0.0.0', () => {
+  app.listen(port, () => {
     console.log(`Listening on port ${port}`);
   })
 };
