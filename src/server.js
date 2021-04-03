@@ -38,3 +38,4 @@ export function run() {
 if (process.env.NODE_ENV !== 'testing') {
   run();
 }
+

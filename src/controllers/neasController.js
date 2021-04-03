@@ -1,6 +1,6 @@
 import NEA from '../models/NEA.js'
 
-const findAll = async (req, res, next) => {
+export const findAll = async (req, res, next) => {
   try {
     const neas = await NEA.find();
     res.json({ neas });
@@ -10,7 +10,7 @@ const findAll = async (req, res, next) => {
   }
 };
 
-const addList = async (req, res, next) => {
+export const addList = async (req, res, next) => {
   try {
     const newNeas = req.body;
     await NEA.create(newNeas);
@@ -20,7 +20,7 @@ const addList = async (req, res, next) => {
   }
 };
 
-const findOne = async (req, res, next) => {
+export const findOne = async (req, res, next) => {
   const neaId = req.params.id;
   try {
     const nea = await NEA.findById(neaId);
@@ -34,7 +34,7 @@ const findOne = async (req, res, next) => {
   }
 };
 
-const updateOne = async (req, res, next) => {
+export const updateOne = async (req, res, next) => {
   const newNea = req.body;
   const neaId = req.params.id;
   try {
@@ -50,7 +50,7 @@ const updateOne = async (req, res, next) => {
   }
 };
 
-const removeOne = async (req, res, next) => {
+export const removeOne = async (req, res, next) => {
   const neaId = req.params.id;
   try {
     let nea = await NEA.findById(neaId);
@@ -64,5 +64,3 @@ const removeOne = async (req, res, next) => {
     res.status(500).json({ message: 'Server error' });
   }
 };
-
-export default { findAll, addList, findOne, updateOne, removeOne }

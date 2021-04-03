@@ -1,5 +1,5 @@
 import express from 'express';
-import neasController from '../controllers/neasController.js';
+import * as neasController from '../controllers/neasController.js';
 import auth from '../middleware/authMiddleware.js'
 const router = express.Router();
 

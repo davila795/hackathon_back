@@ -1,7 +1,7 @@
 import User from '../models/User.js';
 import hashUsers from '../functions/hashUsers.js';
 
-const findAll = async (req, res, next) => {
+export const findAll = async (req, res, next) => {
   try {
     const users = await User.find().select('-password');
     res.json({ users });
@@ -11,7 +11,7 @@ const findAll = async (req, res, next) => {
   }
 };
 
-const addList = async (req, res, next) => {
+export const addList = async (req, res, next) => {
   const users = req.body;
   try {
     //  Hash each user password
@@ -25,7 +25,7 @@ const addList = async (req, res, next) => {
   }
 };
 
-const findOne = async (req, res, next) => {
+export const findOne = async (req, res, next) => {
   const userId = req.params.id;
   try {
     const user = await User.findById(userId).select('-password');
@@ -39,7 +39,7 @@ const findOne = async (req, res, next) => {
   }
 };
 
-const updateOne = async (req, res, next) => {
+export const updateOne = async (req, res, next) => {
   const newUser = req.body,
     userId = req.params.id,
     loggedInUser = req.user
@@ -58,7 +58,7 @@ const updateOne = async (req, res, next) => {
   }
 };
 
-const removeOne = async (req, res, next) => {
+export const removeOne = async (req, res, next) => {
   const userId = req.params.id,
     loggedInUser = req.user
   try {
@@ -76,4 +76,3 @@ const removeOne = async (req, res, next) => {
   }
 };
 
-export default { findAll, addList, findOne, updateOne, removeOne }

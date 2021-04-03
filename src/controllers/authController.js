@@ -3,7 +3,7 @@ import bcryptjs from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import 'dotenv/config.js'
 
-const signUp = async (req, res, next) => {
+export const signUp = async (req, res, next) => {
   const { username, password } = req.body;
   try {
     //  Check if username exists
@@ -40,7 +40,7 @@ const signUp = async (req, res, next) => {
   }
 };
 
-const login = async (req, res, next) => {
+export const login = async (req, res, next) => {
   const { username, password } = req.body;
   try {
     let user = await User.findOne({ username });
@@ -73,7 +73,7 @@ const login = async (req, res, next) => {
   }
 };
 
-const loggedInUser = async (req, res, next) => {
+export const loggedInUser = async (req, res, next) => {
   const userId = req.user.id;
   try {
     const user = await User.findById(userId).select('-password');
@@ -83,5 +83,3 @@ const loggedInUser = async (req, res, next) => {
     res.status(500).json({ message: 'Server error' });
   }
 };
-
-export default { login, signUp, loggedInUser };
