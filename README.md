@@ -2,6 +2,8 @@
 
 **For endpoints testing use => [Deployed API](https://nea-server.herokuapp.com/)**: https://nea-server.herokuapp.com/
 
+```npm i``` to install node modules.
+
 ```npm run seed``` to seed database with CSV file.
 
 ```npm run dev``` to run in development.
