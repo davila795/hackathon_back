@@ -1,4 +1,6 @@
 import User from '../models/User.js';
+import bcryptjs from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 
 const findAll = async (req, res, next) => {
   try {

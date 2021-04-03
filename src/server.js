@@ -3,6 +3,7 @@ import cors from 'cors';
 import 'dotenv/config.js';
 import connectDB from './config/db.js';
 
+import authRoutes from './routes/auth.js'
 import neasRoutes from './routes/neas.js'
 import userRoutes from './routes/user.js'
 
@@ -23,9 +24,10 @@ export function run() {
   const port = process.env.NODE_PORT || 4000;
 
   //  Routes
-  app.get('/', (req, res) => res.send('HI'))
+  app.use('/api/auth', authRoutes);
   app.use('/api/nea', neasRoutes);
   app.use('/api/user', userRoutes);
+
 
   //  Initialize
   app.listen(port, () => {
