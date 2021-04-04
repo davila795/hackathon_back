@@ -1,19 +1,19 @@
-const NEA = require('../models/NEA.js')
+const Client = require('../models/Client.js');
 
 exports.findAll = async (req, res, next) => {
   try {
-    const neas = await NEA.find();
-    res.json({ neas });
+    const clients = await Client.find();
+    res.json({ clients });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: 'Server error' });
+    res.status(500).json({ message: 'Something went wrong' });
   }
 };
 
 exports.addList = async (req, res, next) => {
   try {
-    const newNeas = req.body;
-    await NEA.create(newNeas);
+    const newClients = req.body;
+    await Client.create(newClients);
     res.json({ message: 'Successfully added!' });
   } catch (error) {
     res.status(500).json({ message: 'Server error' });
@@ -21,13 +21,13 @@ exports.addList = async (req, res, next) => {
 };
 
 exports.findOne = async (req, res, next) => {
-  const neaId = req.params.id;
+  const clientId = req.params.id;
   try {
-    const nea = await NEA.findById(neaId);
-    if (!nea) {
+    const client = await Client.findById(clientId);
+    if (!client) {
       return res.status(404).json({ message: 'Element not found' });
     }
-    res.json(nea);
+    res.json({ client });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: 'Server error' });
@@ -35,15 +35,15 @@ exports.findOne = async (req, res, next) => {
 };
 
 exports.updateOne = async (req, res, next) => {
-  const newNea = req.body;
-  const neaId = req.params.id;
+  const newClient = req.body;
+  const clientId = req.params.id;
   try {
-    let nea = await NEA.findById(neaId);
-    if (!nea) {
+    let client = await Client.findById(clientId);
+    if (!client) {
       return res.status(404).json({ message: 'Element not found' });
     }
-    nea = await NEA.findByIdAndUpdate({ _id: neaId }, { $set: newNea }, { new: true });
-    res.json(nea);
+    client = await Client.findByIdAndUpdate({ _id: clientId }, { $set: newClient }, { new: true });
+    res.json({ client });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: 'Server error' });
@@ -51,13 +51,13 @@ exports.updateOne = async (req, res, next) => {
 };
 
 exports.removeOne = async (req, res, next) => {
-  const neaId = req.params.id;
+  const clientId = req.params.id;
   try {
-    let nea = await NEA.findById(neaId);
-    if (!nea) {
+    let client = await Client.findById(clientId);
+    if (!client) {
       return res.status(404).json({ message: 'Element not found' });
     }
-    await NEA.findByIdAndRemove({ _id: neaId });
+    await Client.findByIdAndRemove({ _id: clientId });
     res.json({ message: 'Element removed' });
   } catch (error) {
     console.log(error);

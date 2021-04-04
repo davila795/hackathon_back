@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const neaSchema = mongoose.Schema({
   full_name: {
@@ -46,4 +46,4 @@ const neaSchema = mongoose.Schema({
 });
 
 const NEA = mongoose.model('NEA', neaSchema)
-export default NEA;
+module.exports = NEA;

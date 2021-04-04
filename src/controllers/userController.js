@@ -1,7 +1,7 @@
-import User from '../models/User.js';
-import hashUsers from '../functions/hashUsers.js';
+const User = require('../models/User.js');
+const hashUsers = require('../functions/hashUsers.js');
 
-export const findAll = async (req, res, next) => {
+exports.findAll = async (req, res, next) => {
   try {
     const users = await User.find().select('-password');
     res.json({ users });
@@ -11,7 +11,7 @@ export const findAll = async (req, res, next) => {
   }
 };
 
-export const addList = async (req, res, next) => {
+exports.addList = async (req, res, next) => {
   const users = req.body;
   try {
     //  Hash each user password
@@ -25,7 +25,7 @@ export const addList = async (req, res, next) => {
   }
 };
 
-export const findOne = async (req, res, next) => {
+exports.findOne = async (req, res, next) => {
   const userId = req.params.id;
   try {
     const user = await User.findById(userId).select('-password');
@@ -39,7 +39,7 @@ export const findOne = async (req, res, next) => {
   }
 };
 
-export const updateOne = async (req, res, next) => {
+exports.updateOne = async (req, res, next) => {
   const newUser = req.body,
     userId = req.params.id,
     loggedInUser = req.user
@@ -58,7 +58,7 @@ export const updateOne = async (req, res, next) => {
   }
 };
 
-export const removeOne = async (req, res, next) => {
+exports.removeOne = async (req, res, next) => {
   const userId = req.params.id,
     loggedInUser = req.user
   try {
@@ -74,5 +74,4 @@ export const removeOne = async (req, res, next) => {
     console.log(error);
     res.status(500).json({ message: 'Server error' });
   }
-};
-
+}

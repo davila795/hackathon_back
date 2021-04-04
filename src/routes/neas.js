@@ -1,7 +1,7 @@
-import express from 'express';
-import * as neasController from '../controllers/neasController.js';
-import auth from '../middleware/authMiddleware.js'
-const router = express.Router();
+const { Router } = require('express');
+const neasController = require('../controllers/neasController.js');
+const auth = require('../middleware/authMiddleware.js');
+const router = Router();
 
 router.get('/', neasController.findAll);
 
@@ -22,4 +22,4 @@ router.delete('/:id',
   neasController.removeOne
 );
 
-export default router;
+module.exports = router;

@@ -1,7 +1,7 @@
-import express from 'express';
-import * as userController from '../controllers/userController.js';
-import auth from '../middleware/authMiddleware.js';
-const router = express.Router();
+const { Router } = require('express');
+const userController = require('../controllers/userController.js');
+const auth = require('../middleware/authMiddleware.js');
+const router = Router();
 
 router.get('/', userController.findAll);
 
@@ -22,4 +22,4 @@ router.delete('/:id',
   userController.removeOne
 );
 
-export default router;
+module.exports= router;

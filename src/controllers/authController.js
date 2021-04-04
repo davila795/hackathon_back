@@ -1,9 +1,9 @@
-import User from '../models/User.js';
-import bcryptjs from 'bcryptjs';
-import jwt from 'jsonwebtoken';
-import 'dotenv/config.js'
+const User = require('../models/User.js');
+const bcryptjs = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+require('dotenv').config()
 
-export const signUp = async (req, res, next) => {
+exports.signUp = async (req, res, next) => {
   const { username, password } = req.body;
   try {
     //  Check if username exists
@@ -40,7 +40,7 @@ export const signUp = async (req, res, next) => {
   }
 };
 
-export const login = async (req, res, next) => {
+exports.login = async (req, res, next) => {
   const { username, password } = req.body;
   try {
     let user = await User.findOne({ username });
@@ -73,7 +73,7 @@ export const login = async (req, res, next) => {
   }
 };
 
-export const loggedInUser = async (req, res, next) => {
+exports.loggedInUser = async (req, res, next) => {
   const userId = req.user.id;
   try {
     const user = await User.findById(userId).select('-password');

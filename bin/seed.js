@@ -1,17 +1,18 @@
 import csvtojson from 'csvtojson';
 import mongoose from 'mongoose';
-import NEA from '../src/models/NEA.js';
+// import NEA from '../src/models/NEA.js';
+import Client from '../src/models/Client.js';
 import 'dotenv/config.js';
 
-const csvFilePath = 'OrbitalParameters_PHAs.csv';
+const csvFilePath = 'List_Of_Clients.csv';
 
 const data = await csvtojson().fromFile(csvFilePath);
 
 mongoose.connect(process.env.DB_MONGO);
 
-NEA.collection.drop();
+// Client.collection.drop();
 
-NEA
+Client
   .create(data)
   .then(NEAsCreated => {
     console.log(`Created: ${NEAsCreated.length} NEA`);
