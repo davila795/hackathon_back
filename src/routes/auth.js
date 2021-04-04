@@ -12,4 +12,8 @@ router.get('/loggedUser',
   authController.loggedInUser
 );
 
+router.get('/login/github', authController.oauthLogin)
+
+router.get('/login/github/callback', authController.oauthLoginCallback);
+
 module.exports = router;

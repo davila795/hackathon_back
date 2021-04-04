@@ -4,6 +4,7 @@ require('dotenv').config()
 module.exports = (req, res, next) => {
   // Read header token
   const token = req.header('x-auth-token');
+  const access_token = req.session.access_token;
 
   // check if there is no token
   if (!token) {
